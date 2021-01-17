@@ -1,0 +1,28 @@
+<h1>Singup Form</h1>
+<form [formGroup]="form"
+      (ngSubmit)="login()">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input formControlName="username_ts"
+           id="username"
+           type="text"
+           class="form-control">
+    <div class="alert alert-danger"
+         *ngIf="usernameGet.touched && usernameGet.invalid">
+      <div *ngIf="usernameGet.errors.required">Username is required.</div>
+      <div *ngIf="usernameGet.errors.minlength">Username must be at least
+        3 long.</div>
+      <div *ngIf="usernameGet.errors.cannotContainSpace">Username must Have no spaces</div>
+      <div *ngIf="usernameGet.errors.shouldBeUnique">This username is taken!</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input formControlName="password_ts"
+           id="password"
+           type="text"
+           class="form-control">
+  </div>
+  <button class="btn btn-primary"
+          type="submit">Sign Up</button>
+</form>
